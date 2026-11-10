@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Royal Fitness World – Malabe | Concept Demo</title>
+  <meta name="description" content="Royal Fitness World – gym at 10th Mile Post, Malabe. Concept website demo.">
+  <!-- Demo only: stops Google from listing this page. REMOVE this line when the real site goes live. -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Bootstrap 5 + Icons + Font -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --gold: #f5b301;
+      --gold-dark: #c98f00;
+      --dark: #0e0e10;
+      --dark-2: #17171b;
+      --dark-3: #222228;
+      --text-muted: #a8a8b3;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; background: var(--dark); color: #fff; }
+    h1, h2, h3, h4, h5, .brand { font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
+    section { padding: 90px 0; }
+    .text-gold { color: var(--gold) !important; }
+    .text-soft { color: var(--text-muted); }
+    .section-title { font-size: 2.6rem; font-weight: 700; }
+    .section-title span { color: var(--gold); }
+    .eyebrow { color: var(--gold); font-weight: 600; letter-spacing: 3px; font-size: .8rem; text-transform: uppercase; }
+
+    /* Demo banner – remove once the owner approves */
+    .demo-banner { background: var(--gold); color: #000; font-size: .8rem; text-align: center; padding: 6px; font-weight: 600; }
+
+    /* Navbar */
+    .navbar { background: rgba(14,14,16,.92); backdrop-filter: blur(8px); border-bottom: 1px solid #222; }
+    .navbar-brand { font-family: 'Oswald'; font-size: 1.4rem; color: #fff !important; }
+    .navbar-brand i { color: var(--gold); }
+    .nav-link { color: #ddd !important; font-weight: 400; margin: 0 6px; }
+    .nav-link:hover { color: var(--gold) !important; }
+
+    /* Buttons */
+    .btn-gold { background: var(--gold); color: #000; font-weight: 600; border: none; padding: 12px 28px; border-radius: 50px; }
+    .btn-gold:hover { background: var(--gold-dark); color: #000; }
+    .btn-outline-gold { border: 2px solid var(--gold); color: var(--gold); font-weight: 600; padding: 10px 26px; border-radius: 50px; }
+    .btn-outline-gold:hover { background: var(--gold); color: #000; }
+
+    /* Hero */
+    .hero {
+      min-height: 92vh; display: flex; align-items: center; position: relative; overflow: hidden;
+      background:
+        radial-gradient(circle at 80% 30%, rgba(245,179,1,.25), transparent 45%),
+        radial-gradient(circle at 10% 90%, rgba(245,179,1,.12), transparent 40%),
+        linear-gradient(135deg, #0e0e10 0%, #1b1b22 100%);
+    }
+    .hero h1 { font-size: clamp(2.6rem, 7vw, 5.2rem); font-weight: 700; line-height: 1.05; }
+    .hero .big-icon { font-size: 22rem; color: rgba(245,179,1,.08); position: absolute; right: -40px; bottom: -60px; transform: rotate(-20deg); }
+    .open-badge { display: inline-block; background: rgba(46,204,113,.15); color: #2ecc71; border: 1px solid #2ecc71; border-radius: 50px; padding: 4px 14px; font-size: .85rem; }
+
+    /* Stats */
+    .stats { background: var(--gold); color: #000; padding: 40px 0; }
+    .stats h3 { font-size: 2.4rem; margin: 0; }
+    .stats p { margin: 0; font-weight: 600; font-size: .9rem; }
+
+    /* Feature cards */
+    .feature-card { background: var(--dark-2); border: 1px solid #26262c; border-radius: 16px; padding: 30px; height: 100%; transition: .3s; }
+    .feature-card:hover { transform: translateY(-6px); border-color: var(--gold); }
+    .feature-card i { font-size: 2.4rem; color: var(--gold); }
+
+    /* Pricing */
+    .price-card { background: var(--dark-2); border: 1px solid #26262c; border-radius: 20px; padding: 40px 30px; height: 100%; position: relative; transition: .3s; }
+    .price-card:hover { transform: translateY(-6px); }
+    .price-card.popular { border: 2px solid var(--gold); background: linear-gradient(180deg, #1f1a0a, var(--dark-2)); }
+    .price-card .tag { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--gold); color: #000; font-size: .75rem; font-weight: 700; padding: 4px 16px; border-radius: 50px; }
+    .price { font-family: 'Oswald'; font-size: 2.8rem; }
+    .price small { font-size: 1rem; color: var(--text-muted); }
+    .price-card ul { list-style: none; padding: 0; text-align: left; }
+    .price-card li { padding: 6px 0; color: #ddd; }
+    .price-card li i { color: var(--gold); margin-right: 8px; }
+
+    /* Timetable */
+    .table-dark-custom { --bs-table-bg: var(--dark-2); --bs-table-color: #ddd; --bs-table-border-color: #2a2a30; }
+    .table-dark-custom th { color: var(--gold); font-family: 'Oswald'; letter-spacing: 1px; }
+
+    /* Trainers */
+    .trainer { background: var(--dark-2); border-radius: 18px; overflow: hidden; text-align: center; border: 1px solid #26262c; }
+    .trainer .photo { height: 220px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #2a2a30, #17171b); font-size: 5rem; color: #444; }
+
+    /* Gallery placeholders */
+    .gallery-item { border-radius: 14px; height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #777; background: linear-gradient(135deg, var(--dark-3), var(--dark-2)); border: 1px dashed #3a3a40; }
+    .gallery-item i { font-size: 2.5rem; color: var(--gold); opacity: .7; }
+
+    /* BMI */
+    .bmi-box { background: var(--dark-2); border-radius: 20px; padding: 40px; border: 1px solid #26262c; }
+    .form-control.dark { background: var(--dark-3); border: 1px solid #333; color: #fff; }
+    .form-control.dark:focus { border-color: var(--gold); box-shadow: none; background: var(--dark-3); color: #fff; }
+    #bmiResult { font-family: 'Oswald'; font-size: 1.6rem; }
+
+    /* Contact */
+    .contact-item { display: flex; gap: 16px; margin-bottom: 22px; }
+    .contact-item i { font-size: 1.5rem; color: var(--gold); }
+    .map-wrap iframe { width: 100%; height: 100%; min-height: 340px; border: 0; border-radius: 18px; filter: grayscale(.3) invert(.9) hue-rotate(180deg); }
+
+    /* Floating WhatsApp */
+    .wa-float { position: fixed; bottom: 24px; right: 24px; width: 60px; height: 60px; background: #25d366; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.9rem; box-shadow: 0 6px 20px rgba(0,0,0,.4); z-index: 999; transition: .3s; }
+    .wa-float:hover { transform: scale(1.1); color: #fff; }
+
+    footer { background: #08080a; border-top: 1px solid #1e1e22; padding: 30px 0; color: var(--text-muted); font-size: .9rem; }
+
+    /* Fade-in on scroll */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all .7s ease; }
+    .reveal.show { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+  <!-- DEMO NOTICE: remove this line after the owner approves the site -->
+  <div class="demo-banner">Concept demo — prepared for Royal Fitness World. Prices, trainers &amp; photos are samples.</div>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar navbar-expand-lg sticky-top navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#home"><i class="bi bi-lightning-charge-fill"></i> Royal Fitness World</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#plans">Plans</a></li>
+          <li class="nav-item"><a class="nav-link" href="#schedule">Schedule</a></li>
+          <li class="nav-item"><a class="nav-link" href="#trainers">Trainers</a></li>
+          <li class="nav-item"><a class="nav-link" href="#bmi">BMI</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item ms-lg-3"><a class="btn btn-gold btn-sm px-4" href="#plans">Join Now</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header class="hero" id="home">
+    <i class="bi bi-lightning-charge-fill big-icon"></i>
+    <div class="container position-relative">
+      <div class="row">
+        <div class="col-lg-8">
+          <span class="open-badge mb-3" id="openStatus"><i class="bi bi-circle-fill me-1" style="font-size:.5rem"></i> Open today · Closes 10:00 PM</span>
+          <p class="eyebrow mt-3">10th Mile Post · Malabe</p>
+          <h1>Train Like <span class="text-gold">Royalty.</span><br>Build Your Best Self.</h1>
+          <p class="lead text-soft my-4 col-lg-9">Modern equipment, expert guidance and a motivating community — right on Athurugiriya Road, Malabe. Your fitness journey starts here.</p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="https://wa.me/94715499337?text=Hi%20Royal%20Fitness%20World!%20I'd%20like%20to%20know%20about%20membership." target="_blank" class="btn btn-gold"><i class="bi bi-whatsapp me-2"></i>Join via WhatsApp</a>
+            <a href="#plans" class="btn btn-outline-gold">View Plans</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== STATS ===== -->
+  <div class="stats">
+    <div class="container">
+      <div class="row text-center g-4">
+        <div class="col-6 col-md-3"><h3 class="counter" data-target="500">0</h3><p>Members*</p></div>
+        <div class="col-6 col-md-3"><h3 class="counter" data-target="50">0</h3><p>Machines*</p></div>
+        <div class="col-6 col-md-3"><h3 class="counter" data-target="5">0</h3><p>Expert Trainers*</p></div>
+        <div class="col-6 col-md-3"><h3>7 Days</h3><p>A Week</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ABOUT / FEATURES ===== -->
+  <section id="about">
+    <div class="container">
+      <div class="text-center mb-5 reveal">
+        <p class="eyebrow">Why Choose Us</p>
+        <h2 class="section-title">More Than Just A <span>Gym</span></h2>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3 reveal">
+          <div class="feature-card">
+            <i class="bi bi-trophy"></i>
+            <h5 class="mt-3">Strength Training</h5>
+            <p class="text-soft mb-0">Free weights, racks and machines for every level — beginner to advanced.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 reveal">
+          <div class="feature-card">
+            <i class="bi bi-heart-pulse"></i>
+            <h5 class="mt-3">Cardio Zone</h5>
+            <p class="text-soft mb-0">Treadmills, bikes and cross-trainers to burn fat and build stamina.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 reveal">
+          <div class="feature-card">
+            <i class="bi bi-person-check"></i>
+            <h5 class="mt-3">Personal Training</h5>
+            <p class="text-soft mb-0">One-on-one coaching with a plan built around your goals.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 reveal">
+          <div class="feature-card">
+            <i class="bi bi-egg-fried"></i>
+            <h5 class="mt-3">Diet Guidance</h5>
+            <p class="text-soft mb-0">Practical nutrition advice to match your training and lifestyle.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PLANS ===== -->
+  <section id="plans" style="background: var(--dark-2);">
+    <div class="container">
+      <div class="text-center mb-5 reveal">
+        <p class="eyebrow">Membership</p>
+        <h2 class="section-title">Choose Your <span>Plan</span></h2>
+        <p class="text-soft">Sample prices — final rates to be confirmed by the gym.</p>
+      </div>
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="price-card text-center">
+            <h4>Monthly</h4>
+            <div class="price my-3">Rs. 4,000 <small>/ month</small></div>
+            <ul>
+              <li><i class="bi bi-check-circle-fill"></i>Full gym access</li>
+              <li><i class="bi bi-check-circle-fill"></i>Cardio &amp; weights</li>
+              <li><i class="bi bi-check-circle-fill"></i>Locker access</li>
+            </ul>
+            <a href="https://wa.me/94715499337?text=Hi!%20I'm%20interested%20in%20the%20Monthly%20plan." target="_blank" class="btn btn-outline-gold w-100 mt-3">Get Started</a>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="price-card popular text-center">
+            <span class="tag">MOST POPULAR</span>
+            <h4>3 Months</h4>
+            <div class="price my-3">Rs. 10,500 <small>/ 3 months</small></div>
+            <ul>
+              <li><i class="bi bi-check-circle-fill"></i>Everything in Monthly</li>
+              <li><i class="bi bi-check-circle-fill"></i>Free workout plan</li>
+              <li><i class="bi bi-check-circle-fill"></i>Body measurement check</li>
+              <li><i class="bi bi-check-circle-fill"></i>Save compared to monthly</li>
+            </ul>
+            <a href="https://wa.me/94715499337?text=Hi!%20I'm%20interested%20in%20the%203-Month%20plan." target="_blank" class="btn btn-gold w-100 mt-3">Get Started</a>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="price-card text-center">
+            <h4>Personal Training</h4>
+            <div class="price my-3">Rs. 15,000 <small>/ month</small></div>
+            <ul>
+              <li><i class="bi bi-check-circle-fill"></i>Full gym access</li>
+              <li><i class="bi bi-check-circle-fill"></i>Dedicated trainer</li>
+              <li><i class="bi bi-check-circle-fill"></i>Custom diet plan</li>
+              <li><i class="bi bi-check-circle-fill"></i>Weekly progress tracking</li>
+            </ul>
+            <a href="https://wa.me/94715499337?text=Hi!%20I'm%20interested%20in%20Personal%20Training." target="_blank" class="btn btn-outline-gold w-100 mt-3">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCHEDULE ===== -->
+  <section id="schedule">
+    <div class="container">
+      <div class="text-center mb-5 reveal">
+        <p class="eyebrow">Opening Hours &amp; Sessions</p>
+        <h2 class="section-title">Weekly <span>Schedule</span></h2>
+        <p class="text-soft">Sample timetable — to be updated with the gym's real hours.</p>
+      </div>
+      <div class="table-responsive reveal">
+        <table class="table table-dark-custom table-bordered text-center align-middle mb-0">
+          <thead>
+            <tr><th>Session</th><th>Mon – Fri</th><th>Saturday</th><th>Sunday</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Morning</td><td>5:00 AM – 10:00 AM</td><td>6:00 AM – 11:00 AM</td><td>6:00 AM – 10:00 AM</td></tr>
+            <tr><td>Afternoon</td><td>12:00 PM – 3:00 PM</td><td>12:00 PM – 3:00 PM</td><td>—</td></tr>
+            <tr><td>Evening</td><td>4:00 PM – 10:00 PM</td><td>4:00 PM – 10:00 PM</td><td>4:00 PM – 8:00 PM</td></tr>
+            <tr><td>Ladies' Session</td><td>10:00 AM – 12:00 PM</td><td>11:00 AM – 12:00 PM</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TRAINERS ===== -->
+  <section id="trainers" style="background: var(--dark-2);">
+    <div class="container">
+      <div class="text-center mb-5 reveal">
+        <p class="eyebrow">Our Team</p>
+        <h2 class="section-title">Meet The <span>Trainers</span></h2>
+      </div>
+      <div class="row g-4 justify-content-center">
+        <div class="col-sm-6 col-lg-4 reveal">
+          <div class="trainer">
+            <div class="photo"><i class="bi bi-person-fill"></i></div>
+            <div class="p-4"><h5>Trainer Name</h5><p class="text-gold mb-0">Head Coach · Strength</p></div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-4 reveal">
+          <div class="trainer">
+            <div class="photo"><i class="bi bi-person-fill"></i></div>
+            <div class="p-4"><h5>Trainer Name</h5><p class="text-gold mb-0">Fat Loss &amp; Cardio</p></div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-4 reveal">
+          <div class="trainer">
+            <div class="photo"><i class="bi bi-person-fill"></i></div>
+            <div class="p-4"><h5>Trainer Name</h5><p class="text-gold mb-0">Personal Training</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY ===== -->
+  <section id="gallery">
+    <div class="container">
+      <div class="text-center mb-5 reveal">
+        <p class="eyebrow">Inside The Gym</p>
+        <h2 class="section-title">Our <span>Gallery</span></h2>
+      </div>
+      <div class="row g-3">
+        <div class="col-6 col-md-4 reveal"><div class="gallery-item"><i class="bi bi-camera"></i><small class="mt-2">Gym floor photo</small></div></div>
+        <div class="col-6 col-md-4 reveal"><div class="gallery-item"><i class="bi bi-camera"></i><small class="mt-2">Weights area</small></div></div>
+        <div class="col-6 col-md-4 reveal"><div class="gallery-item"><i class="bi bi-camera"></i><small class="mt-2">Cardio machines</small></div></div>
+        <div class="col-6 col-md-4 reveal"><div class="gallery-item"><i class="bi bi-camera"></i><small class="mt-2">Members training</small></div></div>
+        <div class="col-6 col-md-4 reveal"><div class="gallery-item"><i class="bi bi-camera"></i><small class="mt-2">Transformation</small></div></div>
+        <div class="col-6 col-md-4 reveal"><div class="gallery-item"><i class="bi bi-camera"></i><small class="mt-2">Gym entrance</small></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BMI CALCULATOR ===== -->
+  <section id="bmi" style="background: var(--dark-2);">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-5 reveal">
+          <p class="eyebrow">Free Tool</p>
+          <h2 class="section-title">Check Your <span>BMI</span></h2>
+          <p class="text-soft">Know where you're starting from. Enter your height and weight, then talk to our trainers about a plan that fits you.</p>
+        </div>
+        <div class="col-lg-7 reveal">
+          <div class="bmi-box">
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <label class="form-label text-soft">Height (cm)</label>
+                <input type="number" id="height" class="form-control form-control-lg dark" placeholder="e.g. 170">
+              </div>
+              <div class="col-sm-6">
+                <label class="form-label text-soft">Weight (kg)</label>
+                <input type="number" id="weight" class="form-control form-control-lg dark" placeholder="e.g. 68">
+              </div>
+              <div class="col-12">
+                <button class="btn btn-gold w-100" onclick="calcBMI()">Calculate</button>
+              </div>
+              <div class="col-12 text-center mt-3"><div id="bmiResult" class="text-soft">Your result will appear here</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact">
+    <div class="container">
+      <div class="text-center mb-5 reveal">
+        <p class="eyebrow">Get In Touch</p>
+        <h2 class="section-title">Visit <span>Us</span></h2>
+      </div>
+      <div class="row g-5">
+        <div class="col-lg-5 reveal">
+          <div class="contact-item">
+            <i class="bi bi-geo-alt-fill"></i>
+            <div><h6>Address</h6><p class="text-soft mb-0">Athurugiriya Rd, 10th Mile Post,<br>Malabe 10115, Western Province</p></div>
+          </div>
+          <div class="contact-item">
+            <i class="bi bi-telephone-fill"></i>
+            <div><h6>Phone</h6><a href="tel:+94715499337" class="text-soft text-decoration-none">+94 71 549 9337</a></div>
+          </div>
+          <div class="contact-item">
+            <i class="bi bi-clock-fill"></i>
+            <div><h6>Hours</h6><p class="text-soft mb-0">Open daily · Closes 10:00 PM</p></div>
+          </div>
+          <div class="d-flex flex-wrap gap-3 mt-4">
+            <a href="https://wa.me/94715499337" target="_blank" class="btn btn-gold"><i class="bi bi-whatsapp me-2"></i>WhatsApp Us</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Royal+fitness+world+malabe" target="_blank" class="btn btn-outline-gold"><i class="bi bi-sign-turn-right me-2"></i>Directions</a>
+          </div>
+        </div>
+        <div class="col-lg-7 map-wrap reveal">
+          <iframe src="https://maps.google.com/maps?q=Royal%20fitness%20world%20malabe&z=15&output=embed" loading="lazy" title="Map to Royal Fitness World"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+      <span class="brand text-white"><i class="bi bi-lightning-charge-fill text-gold"></i> Royal Fitness World</span>
+      <span>&copy; <span id="year"></span> Royal Fitness World, Malabe</span>
+      <span>Website by Lowamina Pigera</span>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp button -->
+  <a href="https://wa.me/94715499337" target="_blank" class="wa-float" aria-label="Chat on WhatsApp"><i class="bi bi-whatsapp"></i></a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Open / closed badge (closes 22:00 — opening time assumed 5:00 AM, confirm with gym)
+    (function () {
+      const h = new Date().getHours();
+      const badge = document.getElementById('openStatus');
+      if (h < 5 || h >= 22) {
+        badge.style.color = '#e74c3c';
+        badge.style.borderColor = '#e74c3c';
+        badge.style.background = 'rgba(231,76,60,.15)';
+        badge.innerHTML = '<i class="bi bi-circle-fill me-1" style="font-size:.5rem"></i> Closed now · Opens 5:00 AM';
+      }
+    })();
+
+    // BMI calculator
+    function calcBMI() {
+      const h = parseFloat(document.getElementById('height').value) / 100;
+      const w = parseFloat(document.getElementById('weight').value);
+      const out = document.getElementById('bmiResult');
+      if (!h || !w || h <= 0 || w <= 0) {
+        out.innerHTML = '<span class="text-danger">Please enter valid height and weight.</span>';
+        return;
+      }
+      const bmi = (w / (h * h)).toFixed(1);
+      let label, color;
+      if (bmi < 18.5)      { label = 'Underweight';  color = '#3498db'; }
+      else if (bmi < 25)   { label = 'Normal weight'; color = '#2ecc71'; }
+      else if (bmi < 30)   { label = 'Overweight';   color = '#f39c12'; }
+      else                 { label = 'Obese';        color = '#e74c3c'; }
+      out.innerHTML = `Your BMI: <span style="color:${color}">${bmi}</span> — <span style="color:${color}">${label}</span>`;
+    }
+
+    // Animated counters
+    const counters = document.querySelectorAll('.counter');
+    const runCounter = el => {
+      const target = +el.dataset.target;
+      let n = 0;
+      const step = Math.max(1, Math.ceil(target / 60));
+      const tick = () => {
+        n += step;
+        if (n >= target) { el.textContent = target + '+'; return; }
+        el.textContent = n;
+        requestAnimationFrame(tick);
+      };
+      tick();
+    };
+
+    // Reveal on scroll + start counters when visible
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('show');
+        if (e.target.classList.contains('counter')) runCounter(e.target);
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal, .counter').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
